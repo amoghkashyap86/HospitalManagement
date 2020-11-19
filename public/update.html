@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <h1 style="color: white;">Update Patient Details </h1>
+        </div>
+
+    </nav>
+    <div class="container">
+        <form id="pform" action="/updatedata" method="POST">
+            <div class="form-group">
+                <label>Patient_Id</label>
+                <input type="number" class="form-control" name="pid" id="pid" placeholder="Patient_Id">
+            </div>
+            <div class="form-group">
+                <label>Patient_name</label>
+                <input type="text" class="form-control" name="pname" id="pname" placeholder="Patient_name">
+            </div>
+            <div class="form-group">
+                <label>Patient_age</label>
+                <input type="number" class="form-control" name="page" id="page" placeholder="Patient_age">
+            </div>
+            <div class="form-group">
+                <label>Patient_phone_number</label>
+                <input type="tel" class="form-control" name="pnumber" id="pnumber" placeholder="Patient_number">
+            </div>
+            <div class="form-group">
+                <label>Patient_blood_group
+                    <input type="text" class="form-control" name="pbloodgroup" id="pbloodgroup"
+                        placeholder="Patient_blood_group">
+                </label>
+
+                <label>Patient_weight
+                    <input type="number" class="form-control" name="pweight" id="pweight" placeholder="Patient_weight">
+
+                </label>
+
+            </div>
+            <div class="form-group">
+                <label>
+                    <input value="male" type="radio" name="gender">
+                    male
+                </label>
+                <label>
+                    <input value="female" type="radio" name="gender">
+                    female
+                </label>
+            </div>
+            <label for="paddress">patient_address</label>
+            <div class="form-group">
+
+                <textarea name="paddress" id="paddress" cols="30" rows="5" form="pform"></textarea>
+            </div>
+            <!-- <input type="submit" class="btn btn-default btn-success"> -->
+            <button type="submit" class="btn btn-default btn-success">Update</button>
+        </form>
+    </div>
+
+
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+
+    </script>
+<script>
+    fetch("/getpidsdetail").then(function (dat) {
+        return dat.json()
+    }).then(function (data) {
+        console.log(data[0]["address"])
+        document.getElementById("pid").value = data[0]["pno"]
+        document.getElementById("pname").value = data[0]["pname"]
+        document.getElementById("page").value = data[0]["p_age"]
+        document.getElementById("pnumber").value = data[0]["p_number"]
+        document.getElementById("pbloodgroup").value = data[0]["blood_group"]
+        document.getElementById("pweight").value = data[0]["weight"]
+        document.getElementById("paddress").value = data[0]["address"]
+
+    })
+</script>
+
+</html>

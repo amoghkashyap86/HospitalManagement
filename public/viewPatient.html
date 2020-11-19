@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <table class="table table-dark">
+        <thead class="">
+
+
+            <tr>
+                <th scope="col">pno</th>
+                <th scope="col">pname</th>
+                <th scope="col">p_age</th>
+                <th scope="col">p_number</th>
+                <th scope="col">pgender</th>
+                <th scope="col">blood_group</th>
+                <th scope="col">weight</th>
+                <th scope="col">address</th>
+            </tr>
+        </thead>
+
+    </table>
+
+
+
+
+</body>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+
+    </script>
+<script>
+    var table = document.getElementsByTagName("table")[0];
+    fetch("/getdata").then(function (dat) {
+        return dat.json()
+    }).then(function (data) {
+        for (let i = 0; i < data.length; i++) {
+            var newrow = table.insertRow(table.rows.length);
+
+            // var cel1 = newrow.insertCell(0)
+            // var cel2 = newrow.insertCell(1)
+            // cel1.innerHTML = obj[key][0]
+            // cel2.innerHTML = obj[key][1]
+            var cellno = 0;
+            for (key in data[i]) {
+                var cel1 = newrow.insertCell(cellno)
+                cel1.innerHTML = data[i][key]
+                cellno++
+            }
+        }
+    })
+
+
+</script>
+
+
+</html>
