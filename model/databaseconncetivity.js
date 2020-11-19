@@ -5,7 +5,7 @@ var mysqlconnection = mysql.createConnection(
     {
         host: 'localhost',
         user: 'root',
-        password: '12345',
+        password: 'amogh555kashyap',
         database: 'hospital'
     }
 );
