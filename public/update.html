@@ -59,6 +59,12 @@
                     female
                 </label>
             </div>
+            <div class="form-group">
+                <label>
+                    Enter Patient Admission Date
+                </label>
+                <input type="date" name="padmissiondate" id="padmissiondate">
+            </div>
             <label for="paddress">patient_address</label>
             <div class="form-group">
 
@@ -86,6 +92,7 @@
         document.getElementById("pnumber").value = data[0]["p_number"]
         document.getElementById("pbloodgroup").value = data[0]["blood_group"]
         document.getElementById("pweight").value = data[0]["weight"]
+        document.getElementById("padmissiondate").value = data[0]["admission_date"]
         document.getElementById("paddress").value = data[0]["address"]
 
     })

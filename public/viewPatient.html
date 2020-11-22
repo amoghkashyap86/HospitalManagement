@@ -29,6 +29,7 @@
                 <th scope="col">blood_group</th>
                 <th scope="col">weight</th>
                 <th scope="col">address</th>
+                <th scope="col">Adimitted Date</th>
             </tr>
         </thead>
 
@@ -58,6 +59,7 @@
             var cellno = 0;
             for (key in data[i]) {
                 var cel1 = newrow.insertCell(cellno)
+                console.log(data[i][key])
                 cel1.innerHTML = data[i][key]
                 cellno++
             }
